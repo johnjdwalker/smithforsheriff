@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Enhanced accessibility and readability */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Ensure minimum contrast ratios */
+  .btn-primary {
+    @apply bg-navy text-white;
+    min-height: 44px; /* Accessibility: minimum touch target */
+  }
+
+  .btn-secondary {
+    @apply bg-gold text-navy;
+    min-height: 44px;
+  }
+
+  /* Enhanced focus styles for better keyboard navigation */
+  .focus-enhanced:focus-visible {
+    @apply ring-2 ring-gold ring-offset-2 ring-offset-navy outline-none;
+  }
+
+  /* Improved button contrast */
+  .btn-outline-gold {
+    @apply border-2 border-gold text-gold bg-white hover:bg-gold hover:text-navy;
+  }
+
+  .btn-outline-navy {
+    @apply border-2 border-navy text-navy bg-white hover:bg-navy hover:text-white;
+  }
+
+  .gold-underline {
+    position: relative;
+  }
+  .gold-underline::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; right: 0; bottom: -8px;
+    height: 4px;
+    background: linear-gradient(90deg, #FFB100 30%, #ffe084 100%);
+    border-radius: 2px;
+    opacity: 0.8;
+    animation: gold-glow-underline 2s cubic-bezier(.4,0,.2,1) infinite alternate;
+    z-index: 1;
+  }
+  @keyframes gold-glow-underline {
+    0% { filter: drop-shadow(0 0 6px #FFD70055); }
+    100% { filter: drop-shadow(0 0 12px #FFD700CC); }
+  }
+
+  .gold-shadow {
+    text-shadow: 0 2px 10px #FFB10055, 0 1px 0 #fff;
+  }
+  .heading-glow {
+    text-shadow: 0 2px 12px #FFB100aa, 0 1px 0 #FFF9EA;
+  }
+
+  .btn-glow {
+    box-shadow: 0 2px 8px #FFB10055, 0 0px 0 #fff;
+    transition: box-shadow 0.2s, transform 0.18s;
+  }
+  .btn-glow:hover, .btn-glow:focus-visible {
+    box-shadow: 0 4px 18px #FFB100BB, 0 2px 8px #fff7;
+    transform: translateY(-2px) scale(1.03);
+  }
+  .btn-outline-gold-strong:focus-visible, .btn-outline-gold-strong:hover {
+    border-color: #FFB100 !important;
+    color: #0A2463 !important;
+    background: #FFB100 !important;
+  }
+
+  .hero-img-glow {
+    box-shadow: 0 0 0 8px #FFB10022, 0 12px 32px #0A246388;
+    border-radius: 0.75rem;
+    animation: hero-img-fadein 1s cubic-bezier(.23,1.54,.36,.94);
+  }
+  @keyframes hero-img-fadein {
+    from { opacity: 0; transform: scale(.97);}
+    to { opacity: 1; transform: scale(1);}
+  }
+}
+
+/* Print styles for better document printing */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
+  h1, h2, h3 {
+    page-break-after: avoid;
+  }
+}
+
+/* Ensure proper loading states */
+img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fix any potential layout shifts */
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 640px) {
+  .text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  
+  .text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
